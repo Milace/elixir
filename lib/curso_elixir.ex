@@ -69,4 +69,32 @@ defmodule CursoElixir do
     concat = concat <> head
     concatenar_elementos(tail, concat)
   end
+
+  #Tringulo de pascal Ejemplo 1####################
+  def pascal1(1), do: (IO.puts("1"); [1])
+  def pascal1(current_level) do
+    list = pascal1(current_level - 1)
+    new_list = [1] ++ for(x <- 0..length(list)-1, do: Enum.at(list, x) + Enum.at(list, x+1, 0))
+    Enum.join(new_list, " ") |> IO.puts
+    new_list
+  end
+
+  #Tringulo de pascal Ejemplo 2###################
+  #def pascal2(n), do: pascal2(n,[1])
+  def pascal2(1,list), do: list
+  def pascal2(n,list \\ [1]) do
+  #def pascal2(n,list) do
+    IO.inspect list
+    new_list = Enum.zip([0]++list, list++[0]) |> Enum.map(fn {a,b} -> a+b end)
+    pascal2(n-1,new_list)
+  end
+
+  #Fibonacci######################################
+  def fibonacci(n) do
+    if (n < 2) do
+      n
+    else
+      fibonacci(n - 2) + fibonacci(n - 1)
+    end
+  end
 end
