@@ -7,11 +7,11 @@ IO.puts("===========================")
 IO.puts("===========================")
 IO.puts("Numbers")
 IO.puts("===========================")
-number=3
+number = 3
 
-number_hex=0xFF
+number_hex = 0xFF
 
-number_oct=0o644
+number_oct = 0o644
 IO.puts("Numbers #{number}, #{number_hex}, #{number_oct}")
 
 float = 3.12
@@ -20,16 +20,16 @@ number_scient = 1.0e-10
 IO.puts("Numbers #{float}, #{number_scient}")
 IO.puts("div(4, 3) =  #{div(4, 3)}")
 IO.puts("rem(4, 3) =  #{rem(4, 3)}")
-IO.puts("3/4 =  #{3/4}")
-IO.puts("3*4 =  #{3*4}")
-IO.puts("3+4 =  #{3+4}")
+IO.puts("3/4 =  #{3 / 4}")
+IO.puts("3*4 =  #{3 * 4}")
+IO.puts("3+4 =  #{3 + 4}")
 
 IO.puts("===========================")
 IO.puts("Booleans")
 IO.puts("===========================")
 
-t= true
-f= false
+t = true
+f = false
 
 IO.puts("===AND===")
 IO.puts("t and f = #{t and f}")
@@ -42,9 +42,9 @@ IO.puts("t or f = #{t or f}")
 IO.puts("t or t = #{t or t}")
 IO.puts("f or f = #{f or f}")
 IO.puts("f or t = #{f or f}")
-list= [1,"2",:hola,4]
-tuple= {1,"2",:hola,4}
-map= {1,"2",:hola,4}
+list = [1, "2", :hola, 4]
+tuple = {1, "2", :hola, 4}
+map = {1, "2", :hola, 4}
 IO.puts("===functions===")
 IO.puts("is_boolean(t) = #{is_boolean(t)}")
 IO.puts("is_number(number) = #{is_number(number)}")
