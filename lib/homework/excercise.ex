@@ -99,4 +99,33 @@ defmodule Excercise do
 
   def for_loop_dos(_, _, _), do: :ok
 
+  #  Escribe una funcion que reciba un numero entero n e imprima lo siguiente
+  def tringule(1, value), do: value
+  def tringule(n, list \\ [1]) when n > 1 do
+    IO.inspect list
+    [head | _tail] = list
+    if head > 0  do
+      tringule(n - 1, [0 | list]) 
+    else
+      tringule(n - 1, [1 | list]) 
+    end    
+  end
+
+  #Diseñe una funcion recursiva de una lista de numeros
+  def sum([], sum), do: sum  
+  def sum([head | tail], sum \\ 0) do
+    sum(tail, sum + head)
+  end
+
+  #Diseñe una funcion recursiva que retorne el reverse de la misma
+  def reverse([], list), do: list
+  def reverse([head | tail], list \\ []) do
+    reverse(tail, [head] ++ list)
+  end
+
+  #Diseñe una funcion recursiva que verifique que todos los numeros de la lista son ascendentes
+  def ascendant?([], comparation, boolean ), do: boolean
+  def ascendant?([head | tail], comparation \\ 0, boolean \\ true) when boolean == true do
+    ascendant?(tail, head, head > comparation)
+  end
 end
