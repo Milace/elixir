@@ -28,7 +28,7 @@ defmodule Excercise do
   end
 
   #Ejercicio #1
-  def ejer1(0, sum), do: sum
+  def ejer1(0, sum), do: sum #Guardia
 
   def ejer1(n, sum \\ 0) do
     sum = sum + n
@@ -74,4 +74,29 @@ defmodule Excercise do
       true -> ejer4(a - b, b)
     end
   end
+
+  #fibonacci optimizado
+    def fib_optimized(n) when is_integer(n) and n > 0, do: fibo_p(n, 0, 1)
+    defp fibo_p(1, _, b), do: b
+    defp fibo_p(n, a, b), do: fibo_p(n - 1, b, a + b)
+
+
+  # for loop
+  def for_loop(i, n, value) do
+    cond do
+      i < n ->
+        IO.puts "#{value} - #{i} "
+        for_loop(i + 1, n, value)
+      true -> "Acabo"
+    end
+  end
+
+  # for loop 2
+  def for_loop_dos(i, n, value) when i < n do
+    IO.puts "#{value} - #{i} "
+    for_loop_dos(i + 1, n, value)
+  end
+
+  def for_loop_dos(_, _, _), do: :ok
+
 end
