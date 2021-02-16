@@ -145,4 +145,36 @@ defmodule Excercise do
   def ascendant?([head | tail], comparation \\ 0, boolean \\ true) when boolean == true do
     ascendant?(tail, head, head > comparation)
   end
+
+  # Input
+  # unir("abcde", "pqrst")
+  # rta: apbqcrdset
+
+  # unir("hacker", "ranker")
+  # rta: hraacnkkeerr
+
+  # p = a b c d e
+  # Q= p q r s t
+  # R = ap bq cr ds et
+
+  # Enum.join("")
+  # Enum.join(lista, "")
+
+  def unir(p, q) do
+    unirp(String.codepoints(p), String.codepoints(q))
+  end
+
+  defp unirp([], [], acum), do: Enum.join(acum)
+
+  defp unirp([headp | tailp], [], acum) do
+    unirp(tailp, [], acum ++ [headp] )
+  end
+
+  defp unirp([], [headq | tailq], acum) do
+    unirp([], tailq, acum ++  [headq] )
+  end
+
+  defp unirp([headp | tailp], [headq | tailq], acum \\ []) do
+    unirp(tailp, tailq, acum ++ [headp <> headq] )
+  end
 end
