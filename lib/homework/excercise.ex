@@ -160,21 +160,13 @@ defmodule Excercise do
   # Enum.join("")
   # Enum.join(lista, "")
 
-  def unir(p, q) do
-    unirp(String.codepoints(p), String.codepoints(q))
-  end
+  def unir(p, q), do: unirp(String.codepoints(p), String.codepoints(q))
 
   defp unirp([], [], acum), do: Enum.join(acum)
 
-  defp unirp([headp | tailp], [], acum) do
-    unirp(tailp, [], acum ++ [headp] )
-  end
+  defp unirp([headp | tailp], [], acum), do: unirp(tailp, [], acum ++ [headp])
 
-  defp unirp([], [headq | tailq], acum) do
-    unirp([], tailq, acum ++  [headq] )
-  end
+  defp unirp([], [headq | tailq], acum), do: unirp([], tailq, acum ++  [headq])
 
-  defp unirp([headp | tailp], [headq | tailq], acum \\ []) do
-    unirp(tailp, tailq, acum ++ [headp <> headq] )
-  end
+  defp unirp([headp | tailp], [headq | tailq], acum \\ []), do: unirp(tailp, tailq, acum ++ [headp <> headq])
 end
