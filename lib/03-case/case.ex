@@ -1,5 +1,5 @@
 # Funciona
-a = rem(35, 4)
+a = rem(35, 4) #3
 
 result =
   case a do
@@ -11,8 +11,12 @@ result =
 
 IO.puts("result (as function): #{result}")
 
+
+
 result = "No value"
+IO.puts("result 1: #{result}")
 result = "Another Value"
+IO.puts("result 2: #{result}")
 
 case a do
   0 -> result = "35 = 0 mod 4"
