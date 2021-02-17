@@ -169,4 +169,68 @@ defmodule Excercise do
   defp unirp([], [headq | tailq], acum), do: unirp([], tailq, acum ++  [headq])
 
   defp unirp([headp | tailp], [headq | tailq], acum \\ []), do: unirp(tailp, tailq, acum ++ [headp <> headq])
+
+
+  # Crear una funcion que lea aaabaaaaccaaaaba y devuelva a3ba4c2a4ba
+
+  def cont(n) do
+    contp(String.codepoints(n))
+  end
+
+  defp contp([], list, count, comp) do
+    Enum.join(list ++ [comp] ++ [count])
+    # Enum.join(filter(list ++[comp]))
+
+    # aux = list ++[comp] ++ ["#{count}"]
+    # IO.inspect aux
+    # Enum.filter(aux, fn x -> x != "0" and x != "" end) |> IO.inspect |> Enum.join("")
+  end
+
+  defp contp([head | tail], list \\ [], count \\ 0, comp \\ "") do
+
+    res_list =
+      cond do
+        comp == head -> list
+        comp != head && count > 1 -> list ++ [comp] ++ ["#{count}"]
+        true -> list ++ [comp]
+      end
+
+    res_count =
+      cond do
+        comp == head -> count + 1
+        comp != head -> 1
+      end
+    
+    contp(tail, res_list, res_count, head)
+  end
+
+  # defp filter(n), do: n
+
+  # defp filter([head | tail]) do
+  #   res = 
+  #     cond do
+  #       head == "0" || head == "1" -> tail
+  #       true -> [head] ++ tail
+  #     end
+
+  #   filter(res)
+  # end
+
+
+  def cont2(n) do
+    # String.codepoints(n) |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, x, 1, &(&1 + 1)) end)
+    n 
+    |> String.codepoints 
+    |> Enum.chunk_by(&(&1)) 
+    |> Enum.map(fn section ->
+      length = length(section)
+      #IO.inspect section
+      if length > 1 do
+        hd(section) <> "#{length}"
+      else
+        hd(section)
+      end
+    end) 
+    |> Enum.join()
+  end
 end
