@@ -1,4 +1,4 @@
-defmodule KV do
+defmodule Keyvalue do
   def start_link do
     Task.start_link(fn -> loop(%{}) end) # {:ok, pid_1}
   end
