@@ -16,14 +16,14 @@ defmodule Request do
         end
     end
 
-    
+
 
     def character(n) when is_number(n) do
         IO.puts "character ----> "
-        do_get(@url_character <> "#{n}")        
+        do_get(@url_character <> "#{n}")
     end
 
-    def character(n), do: IO.puts "Ingrese un valor correcto"
+    def character(_n), do: IO.puts "Ingrese un valor correcto"
 
 
     def episode(n) when is_number(n) do
@@ -31,13 +31,13 @@ defmodule Request do
         do_get(@url_episode <> "#{n}")
     end
 
-    def episode(n), do: IO.puts "Ingrese un valor correcto"
+    def episode(_n), do: IO.puts "Ingrese un valor correcto"
 
 
     def location(n) when is_number(n) do
-        IO.puts "Location ----> " 
+        IO.puts "Location ----> "
         do_get(@url_location <> "#{n}")
     end
 
-    def location(n), do: IO.puts "Ingrese un valor correcto"
+    def location(_n), do: IO.puts "Ingrese un valor correcto"
 end
