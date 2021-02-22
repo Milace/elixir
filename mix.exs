@@ -14,7 +14,7 @@ defmodule CursoElixir.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {CursoElixir.Application, []},
+      # mod: {CursoElixir.Application, []},
       extra_applications: [:logger, :httpoison]
       # extra_applications: [:logger, :debug, :httpoison]
     ]
