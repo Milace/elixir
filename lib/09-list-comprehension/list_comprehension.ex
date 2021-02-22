@@ -50,5 +50,17 @@ defmodule ListComprenhension do
     import Integer # para poder usar la funcion "is_even"
     for n <- 1..100, is_even(n), rem(n, 3) == 0, do: n
   end
+
+  def list8() do
+    list = ~w{carro moto avion}
+    # for x <- list, do: ~s{#{x} soy una concatenacion con "multiples" comillas}
+    # for x <- list, into: %{}, do: {x, ~s{#{x} soy una concatenacion con "multiples" comillas}}
+    for x <- list, x != "avion" ,into: %{}, do: {x, ~s{#{x} soy una concatenacion con "multiples" comillas}}
+  end
+
+  def list9(list_word \\ [72,101,108,108,111]) do
+    word = for c <- list_word, into: "", do: <<c>>
+    {:ok, :list10, word}
+  end
+
 end
-Lis
