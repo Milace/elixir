@@ -318,4 +318,58 @@ defmodule Excercise do
       true -> search_numbers2(l2, l1)
     end
   end
+
+  # se va a enviar una cadena de string con a, b y c
+  # a < b
+  # b < c
+
+  # input
+  # aababc
+  # output
+  # aaabbc
+
+  # input
+  # ababacba
+  # output
+  # aaabbcab
+  def sort_by_letters(string) do
+    sort_by_lettersp(string |> String.codepoints, "c")
+  end
+
+  defp sort_by_lettersp(list, character, chunk \\ "", acc \\ [])
+
+  defp sort_by_lettersp([], _, chunk, acc), do: chunk <> sort_joinp(acc)
+
+  defp sort_by_lettersp([h | t], character, chunk, acc) do
+    cond do
+      h == character -> sort_by_lettersp(t, character, chunk <> sort_joinp(acc) <> character , [])
+      true -> sort_by_lettersp(t, character, chunk , acc ++ [h])
+    end
+  end
+
+  defp sort_joinp(list), do: list |> Enum.sort |> Enum.join
+
+  #------------------------------------------------------------------------------------------------
+  def sort_by_letters2_c(string) do
+    cond do
+      not is_binary(string) ->{:error, "Input is not valid. Should be a string"}
+      true -> sort_by_letters2p(string, "c")
+    end
+  end
+
+  def sort_by_letters2_a(string) do
+    cond do
+      not is_binary(string) ->{:error, "Input is not valid. Should be a string"}
+      true -> sort_by_letters2p(string, "a")
+    end
+  end
+
+  defp sort_by_letters2p(string, split_by) do
+    string |> String.split(split_by) |> Enum.map(&(&1 |> String.codepoints |> Enum.sort |> Enum.join)) |> Enum.join(split_by)
+  end
+
+  #------------------------------------------------------------------------------------------------
+  def sort_by_letters3(string) do
+    string |> String.codepoints |> Enum.chunk_by(&(&1 == "c")) |> Enum.map_join(&(Enum.sort(&1)))
+  end
 end
